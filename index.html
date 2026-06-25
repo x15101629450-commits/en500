@@ -624,15 +624,15 @@
         card.className = `word-card${savedState === "highlight" ? " is-highlighted" : ""}`;
         card.draggable = true;
         card.dataset.word = item[0];
-        const moveButton = currentView === "trash"
+        const actionButton = currentView === "trash"
           ? `<button class="restore-button" type="button" aria-label="放回 ${item[0]}" title="放回原处">↩</button>`
-          : `<button class="delete-button" type="button" aria-label="删除 ${item[0]} 到回收站" title="删除到回收站">⌫</button>`;
+          : "";
         card.innerHTML = `
           <div class="card-top">
             <span class="num">${originalIndex}</span>
             <div class="card-actions">
               <button class="speak-button" type="button" aria-label="播放 ${item[0]} 的发音" title="发音">▶</button>
-              ${moveButton}
+              ${actionButton}
             </div>
           </div>
           <strong class="word" title="${item[0]}">${item[0]}</strong>
@@ -655,8 +655,6 @@
             restoreFromTrash(item[0]);
             setView("words");
           });
-        } else {
-          card.querySelector(".delete-button").addEventListener("click", () => moveToTrash(item[0]));
         }
         grid.appendChild(card);
       });
