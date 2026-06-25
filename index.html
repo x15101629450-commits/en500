@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>500 个常用英语单词</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fbfaf6;
+      --paper: #ffffff;
+      --ink: #293136;
+      --muted: #7a8584;
+      --line: #e5ddd2;
+      --accent: #4f9a8b;
+      --accent-dark: #357d70;
+      --soft: #eef7f3;
+      --panel: rgba(255, 255, 255, .72);
+      --mark: #ffe071;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 224, 113, .18), transparent 26%),
+        linear-gradient(180deg, #fbfaf6 0%, #f2f7f4 100%);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1760px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 26px 0 38px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(229, 221, 210, .82);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 14px 36px rgba(72, 83, 84, .08);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      font-weight: 760;
+    }
+
+    .tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    input {
+      width: min(340px, 100%);
+      height: 42px;
+      border: 1px solid rgba(229, 221, 210, .95);
+      border-radius: 8px;
+      padding: 0 14px;
+      font-size: 15px;
+      background: var(--paper);
+      color: var(--ink);
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(22, 124, 128, .16);
+    }
+
+    button {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--accent-dark);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin: 0;
+      padding: 5px;
+      width: fit-content;
+      border: 1px solid rgba(229, 221, 210, .82);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .68);
+    }
+
+    .tab-button {
+      width: auto;
+      min-width: 94px;
+      height: 34px;
+      padding: 0 14px;
+      border: 0;
+      background: transparent;
+      color: #566361;
+      font-weight: 650;
+    }
+
+    .tab-button.is-active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .tab-button.is-drop-target {
+      border-color: #d1a900;
+      background: #fff4b8;
+      color: #4d3f00;
+      box-shadow: 0 0 0 3px rgba(255, 216, 77, .35);
+    }
+
+    .grid-wrap {
+      overflow-x: auto;
+      padding: 10px 10px 12px;
+      border: 1px solid rgba(229, 221, 210, .72);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .45);
+    }
+
+    .workspace-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .view-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .count-badge {
+      min-width: 62px;
+      height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(229, 221, 210, .82);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .72);
+      color: #5a6765;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 32px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(15, minmax(104px, 1fr));
+      gap: 9px;
+      align-items: stretch;
+      min-width: 1685px;
+    }
+
+    .word-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 88px;
+      padding: 9px 8px 8px;
+      border: 1px solid rgba(229, 221, 210, .9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 8px 18px rgba(72, 83, 84, .06);
+    }
+
+    .word-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(79, 154, 139, .58);
+      background: var(--soft);
+      box-shadow: 0 12px 22px rgba(72, 83, 84, .1);
+    }
+
+    .word-card[draggable="true"] {
+      cursor: grab;
+    }
+
+    .word-card.is-dragging {
+      cursor: grabbing;
+      opacity: .45;
+    }
+
+    .word-card.is-highlighted {
+      border-color: #e5be35;
+      background: #fff4bd;
+      box-shadow: 0 8px 18px rgba(191, 144, 0, .13);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      margin-bottom: 6px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .card-actions button {
+      width: 24px;
+      height: 24px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: #edf6f2;
+      color: #425056;
+      font-size: 12px;
+    }
+
+    .card-actions button:hover {
+      background: #dfeaec;
+    }
+
+    .card-actions .speak-button {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .card-actions .speak-button:hover {
+      background: var(--accent-dark);
+    }
+
+    .card-actions .delete-button {
+      background: #f3e8e5;
+      color: #7a3528;
+    }
+
+    .card-actions .delete-button:hover {
+      background: #ead6d1;
+    }
+
+    .card-actions .restore-button {
+      background: #e6f1eb;
+      color: #23603f;
+    }
+
+    .card-actions .restore-button:hover {
+      background: #d5e8dd;
+    }
+
+    .num {
+      color: var(--muted);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .word {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 4px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.12;
+    }
+
+    .meaning {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      color: #394449;
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .empty {
+      display: none;
+      padding: 32px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .context-menu {
+      position: fixed;
+      z-index: 20;
+      display: none;
+      min-width: 138px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 16px 34px rgba(30, 37, 40, .16);
+    }
+
+    .context-menu.is-open {
+      display: grid;
+      gap: 4px;
+    }
+
+    .context-menu button {
+      width: 100%;
+      height: 34px;
+      padding: 0 10px;
+      border-radius: 6px;
+      background: transparent;
+      color: #273238;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .context-menu button:hover {
+      background: var(--soft);
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+      }
+
+      header {
+        display: block;
+        padding: 12px;
+      }
+
+      .tools {
+        justify-content: flex-start;
+        margin-top: 14px;
+      }
+
+      .workspace-bar {
+        display: block;
+      }
+
+      .view-tools {
+        margin-bottom: 10px;
+      }
+
+      .tabs {
+        margin-bottom: 0;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      .word-card {
+        min-height: 76px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>500 个常用英语单词</h1>
+      </div>
+    </header>
+
+    <div class="workspace-bar">
+      <div class="view-tools">
+        <nav class="tabs" aria-label="单词视图">
+          <button class="tab-button is-active" id="wordsTab" type="button">单词</button>
+          <button class="tab-button" id="trashTab" type="button">回收站</button>
+        </nav>
+        <span class="count-badge" id="countBadge">500</span>
+      </div>
+      <div class="tools">
+        <input id="search" type="search" placeholder="搜索单词 / 中文意思">
+      </div>
+    </div>
+    <div class="grid-wrap">
+      <section class="word-grid" id="wordGrid" aria-label="常用英语单词"></section>
+    </div>
+    <div class="empty" id="empty">没有找到匹配的单词。</div>
+    <div class="context-menu" id="contextMenu" role="menu">
+      <button id="menuHighlight" type="button" role="menuitem">高亮</button>
+      <button id="menuTrash" type="button" role="menuitem">删除到回收站</button>
+    </div>
+  </main>
+
+  <script>
+    const words = [
+      ["the", "thuh / thee", "这个；那个；这些；那些"], ["be", "bee", "是；成为"], ["to", "too", "向；到；给"], ["of", "uhv", "属于；关于"], ["and", "and", "和；并且"],
+      ["a", "uh", "一个"], ["in", "in", "在……里面"], ["that", "that", "那个；那"], ["have", "hav", "有"], ["I", "eye", "我"],
+      ["it", "it", "它"], ["for", "for", "为了；给"], ["not", "not", "不；没有"], ["on", "on", "在……上"], ["with", "with", "和；带有"],
+      ["he", "hee", "他"], ["as", "az", "作为；像"], ["you", "yoo", "你；你们"], ["do", "doo", "做"], ["at", "at", "在"],
+      ["this", "this", "这个"], ["but", "but", "但是"], ["his", "hiz", "他的"], ["by", "bye", "通过；在旁边"], ["from", "frum", "来自"],
+      ["they", "thay", "他们；她们；它们"], ["we", "wee", "我们"], ["say", "say", "说"], ["her", "hur", "她的；她"], ["she", "shee", "她"],
+      ["or", "or", "或者"], ["an", "an", "一个"], ["will", "wil", "将会"], ["my", "my", "我的"], ["one", "wun", "一；一个"],
+      ["all", "awl", "全部"], ["would", "wood", "将；会"], ["there", "thair", "那里"], ["their", "thair", "他们的"], ["what", "wut", "什么"],
+      ["so", "soh", "所以；如此"], ["up", "up", "向上"], ["out", "out", "外面；出去"], ["if", "if", "如果"], ["about", "uh-bout", "关于；大约"],
+      ["who", "hoo", "谁"], ["get", "get", "得到；变得"], ["which", "wich", "哪一个"], ["go", "goh", "去"], ["me", "mee", "我"],
+      ["when", "wen", "什么时候"], ["make", "mayk", "制作；使"], ["can", "kan", "能；可以"], ["like", "lyk", "喜欢；像"], ["time", "tym", "时间"],
+      ["no", "noh", "不；没有"], ["just", "just", "刚刚；只是"], ["him", "him", "他"], ["know", "noh", "知道"], ["take", "tayk", "拿；带；花费"],
+      ["people", "pee-puhl", "人们"], ["into", "in-too", "进入"], ["year", "yeer", "年"], ["your", "yor", "你的；你们的"], ["good", "good", "好的"],
+      ["some", "sum", "一些"], ["could", "kood", "能够"], ["them", "them", "他们；她们；它们"], ["see", "see", "看见"], ["other", "uh-thur", "其他的"],
+      ["than", "than", "比"], ["then", "then", "然后；那时"], ["now", "now", "现在"], ["look", "look", "看"], ["only", "ohn-lee", "只；仅仅"],
+      ["come", "kum", "来"], ["its", "its", "它的"], ["over", "oh-vur", "在……上方；结束"], ["think", "thingk", "想；认为"], ["also", "awl-soh", "也"],
+      ["back", "bak", "回来；后面"], ["after", "af-tur", "在……之后"], ["use", "yooz", "使用"], ["two", "too", "二"], ["how", "how", "怎样"],
+      ["our", "ow-er", "我们的"], ["work", "werk", "工作"], ["first", "furst", "第一"], ["well", "wel", "好；井"], ["way", "way", "方法；道路"],
+      ["even", "ee-vuhn", "甚至；平坦的"], ["new", "noo", "新的"], ["want", "wont", "想要"], ["because", "bi-kawz", "因为"], ["any", "en-ee", "任何；一些"],
+      ["these", "theez", "这些"], ["give", "giv", "给"], ["day", "day", "天；日子"], ["most", "mohst", "最多；大多数"], ["us", "us", "我们"],
+      ["is", "iz", "是"], ["are", "ar", "是"], ["was", "wuz", "是；曾是"], ["were", "wur", "是；曾是"], ["been", "bin", "曾经是"],
+      ["being", "bee-ing", "存在；正在是"], ["has", "haz", "有"], ["had", "had", "有；曾有"], ["did", "did", "做了"], ["does", "duz", "做"],
+      ["should", "shood", "应该"], ["may", "may", "可能；可以"], ["might", "myt", "可能"], ["must", "must", "必须"], ["shall", "shal", "将要"],
+      ["am", "am", "是"], ["very", "ver-ee", "非常"], ["much", "much", "许多；非常"], ["many", "men-ee", "许多"], ["more", "mor", "更多"],
+      ["little", "lit-uhl", "小的；少量"], ["few", "fyoo", "少数"], ["long", "lawng", "长的"], ["great", "grayt", "伟大的；很棒"], ["small", "smawl", "小的"],
+      ["big", "big", "大的"], ["high", "hy", "高的"], ["low", "loh", "低的"], ["old", "ohld", "老的；旧的"], ["young", "yung", "年轻的"],
+      ["same", "saym", "相同的"], ["different", "dif-er-uhnt", "不同的"], ["right", "ryt", "正确；右边"], ["left", "left", "左边；离开"], ["early", "ur-lee", "早的"],
+      ["late", "layt", "晚的"], ["last", "last", "最后的；上一个"], ["next", "nekst", "下一个"], ["near", "neer", "近的"], ["far", "far", "远的"],
+      ["here", "heer", "这里"], ["again", "uh-gen", "再次"], ["always", "awl-wayz", "总是"], ["never", "nev-er", "从不"], ["often", "aw-fuhn", "经常"],
+      ["sometimes", "sum-tymz", "有时"], ["usually", "yoo-zhoo-uh-lee", "通常"], ["really", "ree-uh-lee", "真正地；很"], ["almost", "awl-mohst", "几乎"], ["home", "hohm", "家"],
+      ["house", "hows", "房子"], ["room", "room", "房间"], ["door", "dor", "门"], ["window", "win-doh", "窗户"], ["table", "tay-buhl", "桌子"],
+      ["chair", "chair", "椅子"], ["bed", "bed", "床"], ["kitchen", "kich-uhn", "厨房"], ["floor", "flor", "地板"], ["school", "skool", "学校"],
+      ["class", "klas", "班级；课"], ["teacher", "tee-chur", "老师"], ["student", "stoo-duhnt", "学生"], ["book", "book", "书"], ["paper", "pay-pur", "纸；论文"],
+      ["pen", "pen", "钢笔"], ["pencil", "pen-suhl", "铅笔"], ["lesson", "les-uhn", "课程"], ["word", "wurd", "单词"], ["family", "fam-uh-lee", "家庭"],
+      ["father", "fah-thur", "父亲"], ["mother", "muh-thur", "母亲"], ["parent", "pair-uhnt", "父母之一"], ["child", "chyld", "孩子"], ["son", "sun", "儿子"],
+      ["daughter", "daw-ter", "女儿"], ["brother", "bruh-thur", "兄弟"], ["sister", "sis-ter", "姐妹"], ["friend", "frend", "朋友"], ["man", "man", "男人"],
+      ["woman", "woo-muhn", "女人"], ["boy", "boy", "男孩"], ["girl", "gurl", "女孩"], ["baby", "bay-bee", "婴儿"], ["person", "pur-suhn", "人"],
+      ["name", "naym", "名字"], ["life", "lyf", "生活；生命"], ["hand", "hand", "手"], ["eye", "eye", "眼睛"], ["head", "hed", "头"],
+      ["face", "fays", "脸"], ["hair", "hair", "头发"], ["mouth", "mouth", "嘴"], ["ear", "eer", "耳朵"], ["nose", "nohz", "鼻子"],
+      ["arm", "arm", "手臂"], ["leg", "leg", "腿"], ["foot", "foot", "脚"], ["heart", "hart", "心；心脏"], ["eat", "eet", "吃"],
+      ["drink", "dringk", "喝"], ["sleep", "sleep", "睡觉"], ["wake", "wayk", "醒来"], ["walk", "wawk", "走路"], ["run", "run", "跑"],
+      ["sit", "sit", "坐"], ["stand", "stand", "站立"], ["read", "reed", "读"], ["write", "ryt", "写"], ["speak", "speek", "说话"],
+      ["listen", "lis-uhn", "听"], ["hear", "heer", "听见"], ["talk", "tawk", "谈话"], ["tell", "tel", "告诉"], ["ask", "ask", "问"],
+      ["answer", "an-ser", "回答；答案"], ["call", "kawl", "打电话；叫"], ["help", "help", "帮助"], ["try", "try", "尝试"], ["start", "start", "开始"],
+      ["stop", "stop", "停止"], ["open", "oh-puhn", "打开"], ["close", "klohz", "关闭"], ["turn", "turn", "转动"], ["move", "moov", "移动"],
+      ["play", "play", "玩；播放"], ["live", "liv", "居住；生活"], ["love", "luv", "爱"], ["hate", "hayt", "讨厌"], ["learn", "lern", "学习"],
+      ["study", "stud-ee", "学习；研究"], ["teach", "teech", "教"], ["remember", "ri-mem-ber", "记得"], ["forget", "fer-get", "忘记"], ["understand", "un-der-stand", "理解"],
+      ["believe", "bi-leev", "相信"], ["feel", "feel", "感觉"], ["find", "fynd", "找到"], ["lose", "looz", "丢失；输"], ["buy", "by", "买"],
+      ["sell", "sel", "卖"], ["pay", "pay", "支付"], ["spend", "spend", "花费"], ["cost", "kost", "花费；成本"], ["bring", "bring", "带来"],
+      ["carry", "kar-ee", "携带"], ["keep", "keep", "保持"], ["leave", "leev", "离开；留下"], ["stay", "stay", "停留"], ["meet", "meet", "遇见"],
+      ["wait", "wayt", "等待"], ["watch", "woch", "观看；手表"], ["show", "shoh", "展示"], ["change", "chaynj", "改变"], ["follow", "fol-oh", "跟随"],
+      ["build", "bild", "建造"], ["break", "brayk", "打破"], ["cut", "kut", "切"], ["clean", "kleen", "打扫；干净的"], ["put", "poot", "放"],
+      ["let", "let", "让"], ["need", "need", "需要"], ["mean", "meen", "意思是"], ["seem", "seem", "似乎"], ["become", "bi-kum", "变成"],
+      ["happen", "hap-uhn", "发生"], ["place", "plays", "地方"], ["city", "sit-ee", "城市"], ["country", "kun-tree", "国家；乡村"], ["world", "wurld", "世界"],
+      ["street", "street", "街道"], ["road", "rohd", "道路"], ["car", "kar", "汽车"], ["bus", "bus", "公共汽车"], ["train", "trayn", "火车；训练"],
+      ["plane", "playn", "飞机"], ["bike", "byk", "自行车"], ["ship", "ship", "船"], ["station", "stay-shuhn", "车站"], ["airport", "air-port", "机场"],
+      ["shop", "shop", "商店；购物"], ["store", "stor", "商店"], ["market", "mar-kit", "市场"], ["office", "aw-fis", "办公室"], ["bank", "bangk", "银行"],
+      ["hotel", "hoh-tel", "酒店"], ["hospital", "hos-pi-tuhl", "医院"], ["park", "park", "公园"], ["restaurant", "res-tuh-rahnt", "餐馆"], ["cafe", "ka-fay", "咖啡馆"],
+      ["cinema", "sin-uh-muh", "电影院"], ["library", "ly-brer-ee", "图书馆"], ["church", "church", "教堂"], ["beach", "beech", "海滩"], ["river", "riv-er", "河流"],
+      ["mountain", "mown-tuhn", "山"], ["food", "food", "食物"], ["bread", "bred", "面包"], ["rice", "rys", "米饭；大米"], ["meat", "meet", "肉"],
+      ["fish", "fish", "鱼"], ["egg", "eg", "鸡蛋"], ["milk", "milk", "牛奶"], ["water", "waw-ter", "水"], ["tea", "tee", "茶"],
+      ["coffee", "kaw-fee", "咖啡"], ["fruit", "froot", "水果"], ["apple", "ap-uhl", "苹果"], ["banana", "buh-nan-uh", "香蕉"], ["orange", "or-inj", "橙子；橙色"],
+      ["vegetable", "vej-tuh-buhl", "蔬菜"], ["potato", "puh-tay-toh", "土豆"], ["tomato", "tuh-may-toh", "西红柿"], ["salad", "sal-uhd", "沙拉"], ["sugar", "shoog-er", "糖"],
+      ["salt", "sawlt", "盐"], ["breakfast", "brek-fuhst", "早餐"], ["lunch", "lunch", "午餐"], ["dinner", "din-er", "晚餐"], ["meal", "meel", "一餐"],
+      ["cup", "kup", "杯子"], ["glass", "glas", "玻璃杯；玻璃"], ["plate", "playt", "盘子"], ["bowl", "bohl", "碗"], ["knife", "nyf", "刀"],
+      ["fork", "fork", "叉子"], ["clothes", "klohz", "衣服"], ["shirt", "shurt", "衬衫"], ["coat", "koht", "外套"], ["dress", "dres", "连衣裙；穿衣"],
+      ["shoe", "shoo", "鞋"], ["hat", "hat", "帽子"], ["bag", "bag", "包"], ["watch", "woch", "手表；观看"], ["phone", "fohn", "电话"],
+      ["computer", "kuhm-pyoo-ter", "电脑"], ["money", "mun-ee", "钱"], ["price", "prys", "价格"], ["job", "job", "工作"], ["business", "biz-nis", "商业；生意"],
+      ["company", "kum-puh-nee", "公司"], ["boss", "baws", "老板"], ["worker", "wur-ker", "工人"], ["problem", "prob-luhm", "问题"], ["question", "kwes-chuhn", "问题"],
+      ["idea", "eye-dee-uh", "想法"], ["reason", "ree-zuhn", "原因"], ["result", "ri-zult", "结果"], ["story", "stor-ee", "故事"], ["news", "nooz", "新闻"],
+      ["letter", "let-er", "信；字母"], ["message", "mes-ij", "消息"], ["picture", "pik-cher", "图片"], ["photo", "foh-toh", "照片"], ["music", "myoo-zik", "音乐"],
+      ["song", "sawng", "歌曲"], ["movie", "moo-vee", "电影"], ["game", "gaym", "游戏；比赛"], ["sport", "sport", "运动"], ["ball", "bawl", "球"],
+      ["team", "teem", "团队"], ["match", "mach", "比赛；匹配"], ["trip", "trip", "旅行"], ["travel", "trav-uhl", "旅行"], ["holiday", "hol-i-day", "假期"],
+      ["weekend", "week-end", "周末"], ["morning", "mor-ning", "早晨"], ["afternoon", "af-ter-noon", "下午"], ["evening", "eev-ning", "晚上"], ["night", "nyt", "夜晚"],
+      ["today", "tuh-day", "今天"], ["tomorrow", "tuh-mor-oh", "明天"], ["yesterday", "yes-ter-day", "昨天"], ["week", "week", "周"], ["month", "munth", "月"],
+      ["season", "see-zuhn", "季节"], ["spring", "spring", "春天"], ["summer", "sum-er", "夏天"], ["autumn", "aw-tuhm", "秋天"], ["winter", "win-ter", "冬天"],
+      ["weather", "weth-er", "天气"], ["rain", "rayn", "雨；下雨"], ["snow", "snoh", "雪；下雪"], ["wind", "wind", "风"], ["sun", "sun", "太阳"],
+      ["moon", "moon", "月亮"], ["star", "star", "星星"], ["sky", "sky", "天空"], ["cloud", "klowd", "云"], ["fire", "fyr", "火"],
+      ["light", "lyt", "光；轻的"], ["dark", "dark", "黑暗的"], ["color", "kul-er", "颜色"], ["sound", "sownd", "声音"], ["red", "red", "红色"],
+      ["blue", "bloo", "蓝色"], ["green", "green", "绿色"], ["yellow", "yel-oh", "黄色"], ["black", "blak", "黑色"], ["white", "wyt", "白色"],
+      ["brown", "brown", "棕色"], ["gray", "gray", "灰色"], ["pink", "pingk", "粉色"], ["purple", "pur-puhl", "紫色"], ["hot", "hot", "热的"],
+      ["cold", "kohld", "冷的"], ["warm", "worm", "温暖的"], ["cool", "kool", "凉爽的；酷"], ["dry", "dry", "干的"], ["wet", "wet", "湿的"],
+      ["full", "fool", "满的"], ["empty", "emp-tee", "空的"], ["hard", "hard", "硬的；困难的"], ["soft", "sawft", "软的"], ["fast", "fast", "快的"],
+      ["slow", "sloh", "慢的"], ["easy", "ee-zee", "容易的"], ["difficult", "dif-i-kuhlt", "困难的"], ["important", "im-por-tuhnt", "重要的"], ["special", "spesh-uhl", "特别的"],
+      ["free", "free", "免费的；自由的"], ["busy", "biz-ee", "忙的"], ["ready", "red-ee", "准备好的"], ["sure", "shoor", "确定的"], ["happy", "hap-ee", "开心的"],
+      ["sad", "sad", "难过的"], ["angry", "ang-gree", "生气的"], ["tired", "tyrd", "累的"], ["afraid", "uh-frayd", "害怕的"], ["hungry", "hung-gree", "饿的"],
+      ["thirsty", "thur-stee", "渴的"], ["sick", "sik", "生病的"], ["healthy", "hel-thee", "健康的"], ["strong", "strawng", "强壮的"], ["beautiful", "byoo-tuh-fuhl", "美丽的"],
+      ["nice", "nys", "好的；友善的"], ["kind", "kynd", "善良的；种类"], ["friendly", "frend-lee", "友好的"], ["funny", "fun-ee", "有趣的"], ["quiet", "kwy-uht", "安静的"],
+      ["loud", "lowd", "大声的"], ["dirty", "dur-tee", "脏的"], ["safe", "sayf", "安全的"], ["true", "troo", "真实的"], ["false", "fawls", "错误的；假的"],
+      ["possible", "pos-uh-buhl", "可能的"], ["simple", "sim-puhl", "简单的"], ["common", "kom-uhn", "常见的"], ["famous", "fay-muhs", "著名的"], ["popular", "pop-yuh-ler", "受欢迎的"],
+      ["clear", "kleer", "清楚的"], ["short", "short", "短的；矮的"], ["tall", "tawl", "高的"], ["inside", "in-syd", "在里面"], ["outside", "out-syd", "在外面"],
+      ["above", "uh-buv", "在……上方"], ["below", "bi-loh", "在……下方"], ["under", "un-der", "在……下面"], ["between", "bi-tween", "在……之间"], ["behind", "bi-hynd", "在……后面"],
+      ["before", "bi-for", "在……之前"], ["around", "uh-rownd", "在周围"], ["yes", "yes", "是；对"], ["please", "pleez", "请"], ["thanks", "thangks", "谢谢"],
+      ["sorry", "sor-ee", "对不起"], ["hello", "heh-loh", "你好"], ["goodbye", "good-bye", "再见"], ["maybe", "may-bee", "也许"], ["okay", "oh-kay", "好的"],
+      ["welcome", "wel-kuhm", "欢迎"], ["three", "three", "三"], ["four", "for", "四"], ["five", "fyv", "五"], ["six", "siks", "六"],
+      ["seven", "sev-uhn", "七"], ["eight", "ayt", "八"], ["nine", "nyn", "九"], ["ten", "ten", "十"], ["hundred", "hun-druhd", "百"],
+      ["thousand", "thow-zuhnd", "千"], ["second", "sek-uhnd", "第二；秒"], ["third", "thurd", "第三"], ["every", "ev-ree", "每个"], ["each", "eech", "每个"],
+      ["both", "bohth", "两者都"], ["either", "ee-thur", "任一；也"], ["enough", "i-nuf", "足够的"], ["matter", "mat-er", "事情；问题"], ["mind", "mynd", "思想；介意"],
+      ["body", "bod-ee", "身体"], ["voice", "voys", "声音；嗓音"], ["minute", "min-it", "分钟"], ["hour", "ow-er", "小时"], ["line", "lyn", "线；队伍"], ["end", "end", "结束；末尾"],
+      ["begin", "bi-gin", "开始"], ["choose", "chooz", "选择"], ["hope", "hohp", "希望"], ["care", "kair", "关心；照顾"]
+    ];
+
+    const grid = document.getElementById("wordGrid");
+    const search = document.getElementById("search");
+    const empty = document.getElementById("empty");
+    const countBadge = document.getElementById("countBadge");
+    const wordsTab = document.getElementById("wordsTab");
+    const trashTab = document.getElementById("trashTab");
+    const contextMenu = document.getElementById("contextMenu");
+    const menuHighlight = document.getElementById("menuHighlight");
+    const menuTrash = document.getElementById("menuTrash");
+    const stateKey = "common500WordStates";
+    const trashKey = "common500TrashWords";
+    let wordStates = loadStates();
+    let trashWords = loadTrash();
+    let currentView = "words";
+    let contextWord = "";
+
+    function loadStates() {
+      try {
+        const saved = localStorage.getItem(stateKey);
+        return saved ? JSON.parse(saved) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveStates() {
+      localStorage.setItem(stateKey, JSON.stringify(wordStates));
+    }
+
+    function loadTrash() {
+      try {
+        const saved = localStorage.getItem(trashKey);
+        return saved ? JSON.parse(saved) : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveTrash() {
+      localStorage.setItem(trashKey, JSON.stringify(trashWords));
+    }
+
+    function toggleHighlight(word) {
+      if (wordStates[word] === "highlight") {
+        delete wordStates[word];
+      } else {
+        wordStates[word] = "highlight";
+      }
+      saveStates();
+      render(getVisibleWords());
+    }
+
+    function moveToTrash(word) {
+      if (!trashWords.includes(word)) {
+        trashWords.push(word);
+      }
+      saveTrash();
+      render(getVisibleWords());
+    }
+
+    function closeContextMenu() {
+      contextMenu.classList.remove("is-open");
+      contextWord = "";
+    }
+
+    function openContextMenu(event, word) {
+      event.preventDefault();
+      contextWord = word;
+      menuHighlight.textContent = wordStates[word] === "highlight" ? "取消高亮" : "高亮";
+      menuTrash.textContent = currentView === "trash" ? "放回原处" : "删除到回收站";
+      contextMenu.style.left = `${Math.min(event.clientX, window.innerWidth - 150)}px`;
+      contextMenu.style.top = `${Math.min(event.clientY, window.innerHeight - 92)}px`;
+      contextMenu.classList.add("is-open");
+    }
+
+    function restoreFromTrash(word) {
+      trashWords = trashWords.filter((item) => item !== word);
+      saveTrash();
+      render(getVisibleWords());
+    }
+
+    function setView(view) {
+      currentView = view;
+      wordsTab.classList.toggle("is-active", view === "words");
+      trashTab.classList.toggle("is-active", view === "trash");
+      render(getVisibleWords());
+    }
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) {
+        alert("当前浏览器不支持发音功能。");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = 0.82;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function render(list) {
+      grid.innerHTML = "";
+      list.forEach((item) => {
+        const originalIndex = words.indexOf(item) + 1;
+        const savedState = wordStates[item[0]] || "";
+        const card = document.createElement("article");
+        card.className = `word-card${savedState === "highlight" ? " is-highlighted" : ""}`;
+        card.draggable = true;
+        card.dataset.word = item[0];
+        const moveButton = currentView === "trash"
+          ? `<button class="restore-button" type="button" aria-label="放回 ${item[0]}" title="放回原处">↩</button>`
+          : `<button class="delete-button" type="button" aria-label="删除 ${item[0]} 到回收站" title="删除到回收站">⌫</button>`;
+        card.innerHTML = `
+          <div class="card-top">
+            <span class="num">${originalIndex}</span>
+            <div class="card-actions">
+              <button class="speak-button" type="button" aria-label="播放 ${item[0]} 的发音" title="发音">▶</button>
+              ${moveButton}
+            </div>
+          </div>
+          <strong class="word" title="${item[0]}">${item[0]}</strong>
+          <span class="meaning" title="${item[2]}">${item[2]}</span>
+        `;
+        card.addEventListener("dragstart", (event) => {
+          card.classList.add("is-dragging");
+          event.dataTransfer.setData("text/plain", item[0]);
+          event.dataTransfer.effectAllowed = "move";
+        });
+        card.addEventListener("dragend", () => {
+          card.classList.remove("is-dragging");
+          wordsTab.classList.remove("is-drop-target");
+          trashTab.classList.remove("is-drop-target");
+        });
+        card.addEventListener("contextmenu", (event) => openContextMenu(event, item[0]));
+        card.querySelector(".speak-button").addEventListener("click", () => speak(item[0]));
+        if (currentView === "trash") {
+          card.querySelector(".restore-button").addEventListener("click", () => {
+            restoreFromTrash(item[0]);
+            setView("words");
+          });
+        } else {
+          card.querySelector(".delete-button").addEventListener("click", () => moveToTrash(item[0]));
+        }
+        grid.appendChild(card);
+      });
+      countBadge.textContent = list.length;
+      empty.style.display = list.length ? "none" : "block";
+      empty.textContent = currentView === "trash" ? "回收站里没有单词。" : "没有找到匹配的单词。";
+    }
+
+    function getVisibleWords() {
+      const keyword = search.value.trim().toLowerCase();
+      const baseWords = words.filter(([word]) => {
+        const isTrashed = trashWords.includes(word);
+        return currentView === "trash" ? isTrashed : !isTrashed;
+      });
+      if (!keyword) return baseWords;
+      return baseWords.filter(([word, _pron, meaning]) => {
+        return word.toLowerCase().includes(keyword)
+          || meaning.includes(keyword);
+      });
+    }
+
+    search.addEventListener("input", () => render(getVisibleWords()));
+    wordsTab.addEventListener("click", () => setView("words"));
+    trashTab.addEventListener("click", () => setView("trash"));
+    wordsTab.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      wordsTab.classList.add("is-drop-target");
+    });
+    trashTab.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      trashTab.classList.add("is-drop-target");
+    });
+    wordsTab.addEventListener("dragleave", () => wordsTab.classList.remove("is-drop-target"));
+    trashTab.addEventListener("dragleave", () => trashTab.classList.remove("is-drop-target"));
+    wordsTab.addEventListener("drop", (event) => {
+      event.preventDefault();
+      wordsTab.classList.remove("is-drop-target");
+      const word = event.dataTransfer.getData("text/plain");
+      if (trashWords.includes(word)) restoreFromTrash(word);
+      setView("words");
+    });
+    trashTab.addEventListener("drop", (event) => {
+      event.preventDefault();
+      trashTab.classList.remove("is-drop-target");
+      const word = event.dataTransfer.getData("text/plain");
+      if (!trashWords.includes(word)) moveToTrash(word);
+    });
+    menuHighlight.addEventListener("click", () => {
+      if (contextWord) toggleHighlight(contextWord);
+      closeContextMenu();
+    });
+    menuTrash.addEventListener("click", () => {
+      if (contextWord && currentView === "trash") {
+        restoreFromTrash(contextWord);
+        setView("words");
+      } else if (contextWord) {
+        moveToTrash(contextWord);
+      }
+      closeContextMenu();
+    });
+    document.addEventListener("click", (event) => {
+      if (!contextMenu.contains(event.target)) closeContextMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeContextMenu();
+    });
+    render(getVisibleWords());
+  </script>
+</body>
+</html>
